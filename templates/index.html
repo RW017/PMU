@@ -10,10 +10,25 @@
     <link rel="stylesheet" href="..\static\btn.css">
     <link rel="stylesheet" href="..\static\font.css">
     <link rel="stylesheet" href="..\static\body.css">
-    
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css'>
+
+    <link rel="stylesheet" href="..\static\title.css">
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css'>
+
+
+
     <title>主頁面</title>
     <style>
+        .content{
+            margin-top: 10px;
+            margin-left: 5%;
+            margin-right: 5%;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
     </style>
 </head>
 
@@ -24,9 +39,41 @@
         <a href="#">尋找資源</a>
         <a href="#" class="home-icon"><img src="\static\home.png" alt="Home Icon"></a>
     </div>
-    
-    
+    <!-- banner -->
+    <div id="sync1" class="owl-carousel owl-theme">
+        <div class="item">
+            <img src="\static\title1.png" alt="title1">
+        </div>
+        <div class="item">
+            <img src="\static\title1.png" alt="title1">
+        </div>
+        <div class="item">
+            <img src="\static\title1.png" alt="title1">
+        </div>
+
+    </div>
+
+    <div id="sync2" class="owl-carousel owl-theme">
+        <div class="item">
+            <h1>1</h1>
+        </div>
+        <div class="item">
+            <h1>2</h1>
+        </div>
+        <div class="item">
+            <h1>3</h1>
+        </div>
+
+    </div>
+    <!-- 內容 -->
+    <div class="content">
+    <input  placeholder="搜尋" style="width: 50%; font-size: 15px;">
+    </div>
+
     <h5>@pull.me.up2023</h5>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js'></script>
+    <script src="..\static\title.js"></script>
 </body>
 
 </html>

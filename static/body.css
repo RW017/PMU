@@ -15,15 +15,15 @@ html {
     align-items: center;
     padding: 10px 20px;
     background: linear-gradient(to right, #fbae74, #f28484);
-    height: 10px;
+    height: 30px;
 }
 
 .navbar a {
     margin-left: 5px;
-    font-size: 10px;
+    font-size:18px;
     color: white;
     text-decoration: none;
-    line-height:10px; 
+    line-height:40px; 
     align-items: center; 
     padding: 5px; 
     display: inline-block;
@@ -33,11 +33,12 @@ html {
     background-color: #da7a73;
 }
 .navbar img {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     margin-left: 20px;
 }
 .navbar .home-icon {
+    padding-top: 5px;
     padding-right: 30px;  /* 調整此數值直到達到理想的位置 */
 }
 

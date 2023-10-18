@@ -1,0 +1,48 @@
+#sync1 .item {
+    max-width: 1240px; /* 設置最大寬度 */
+    width: 80%;
+    height: auto;
+    background: #EAEAEA; /* 調整成淺色背景 */
+    box-shadow: 0 0 2px 2px #bbbbbb;
+    padding: 0px 0px; /* 調整內邊距，使之比原本低一些 */
+    margin-top: 20px; /* 上下間距設為0，左右自動中心對齊 */
+    margin-bottom: 5px; /* 上下間距設為0，左右自動中心對齊 */
+    margin-left: auto;
+    margin-right: auto;
+    color: #FFF;
+    border-radius: 3px;
+    text-align: center;
+}
+
+  
+  #sync1 .item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto; /* 使圖片居中 */
+}
+  
+  .owl-theme .owl-nav [class*='owl-'] {
+    transition: all 1s ease;
+  }
+  .owl-theme .owl-nav [class*='owl-'].disabled:hover {
+    background-color: #D6D6D6;
+  }
+  #sync1.owl-theme {
+    position: relative;
+  }
+  #sync1.owl-theme .owl-next,
+  #sync1.owl-theme .owl-prev {
+    width: 22px;
+    height: 40px;
+    margin-top: -20px;
+    position: absolute;
+    top: 50%;
+  }
+  #sync1.owl-theme .owl-prev {
+    left: 10px;
+  }
+  #sync1.owl-theme .owl-next {
+    right: 10px;
+  }
