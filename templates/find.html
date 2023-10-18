@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='body.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='btn.css') }}">
+    <link rel="stylesheet" href="..\static\btn.css">
+    <link rel="stylesheet" href="..\static\font.css">
+    <link rel="stylesheet" href="..\static\body.css">
+    <title>Three Sections</title>
+    <style>
+         .content {
+            background-color: #ffffff;
+            display: flex;
+            padding-bottom: 10%;
+            
+        }
+        .hospitals{
+            padding: 10%;
+        }
+        .btn{
+            display: flex;
+            margin: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="side1">
+        <img src="..\static\logo.png" style="width:150px;height: auto;" stalt="Logo">
+        <div class="to_all">
+            <a href="home.html">回到主頁</a>
+            <a href="bot.html">療心機器人</a>
+            <a href="find.html">尋找資源</a>
+            <a href="test.html">測驗</a>
+            <a href="#">更多</a>
+        </div>
+    </div>
+    <div class="mid">
+        <div class="content">
+            <h1>醫療院所查詢</h1>
+            <input type="text" id="addressInput" placeholder="輸入地址...">
+            <div id="btn">
+            <button class="button-40" onclick="searchLocation()">搜尋位置</button>
+            <button class="button-41" onclick="resetToCurrentLocation()">本地位置</button>
+        </div>
+            <div id="hospitals"></div>
+        </div>
+    </div>
+    <div class="side2">
+        這邊還在想放什麼
+    </div>
+    <script>
+        const hospitalsData = [
+            { name: "林青穀家庭醫學專科診所", addr: "台北市大安區大安路一段2-1號", phone: "02-27217055" },
+            { name: "光慧診所", addr: "台北市大安區復興南路二段176號", phone: "02-27555627" },
+            { name: "杏語心靈診所", addr: "台北市大安區復興南路一段200號11樓", phone: "02-27751526" },
+            { name: "書田泌尿科眼科診所", addr: "台北市大安區建國南路2段276號", phone: "02-23690211" },
+            { name: "昱捷診所", addr: "台北市大安區信義路三段202號9樓之1", phone: "02-27002709" },
+            { name: "宇寧身心診所", addr: "台北市大安區復興南路二段6號3樓", phone: "02-27080706" },
+            { name: "晴天身心精神科診所", addr: "台北市大安區延吉街135-3號2樓", phone: "02-87716545" },
+            { name: "自體心理診所", addr: "臺北市大安區延吉街153之9號3樓", phone: "02-27754121" },
+            { name: "主愛心靈診所", addr: "台北市大安區羅斯福路三段269巷39號1樓", phone: "02-23651224" },
+            { name: "馨思身心精神科診所", addr: "台北市大安區信義路二段208號7樓之1", phone: "02-33933030" },
+            { name: "大心診所(忠孝)", addr: "台北市大安區忠孝東路四段205巷7弄13號2樓", phone: "02-27718821" },
+            { name: "春暘診所", addr: "台北市大安區敦化南路二段46號16樓", phone: "02-27019586" },
+            { name: "大安身心診所", addr: "台北市大安區和平東路二段18-9號1樓", phone: "02-23658680" },
+            { name: "向陽身心診所", addr: "台北市大安區忠孝東路四段218之2號B棟2樓", phone: "02-87713000" },
+            { name: "交感身心診所", addr: "台北市大安區信義路四段143號4樓", phone: "02-77306840" },
+            { name: "嘉齡診所", addr: "台北市大安區敦化南路1段205號B1", phone: "02-27211257" },
+            { name: "逢甲大學", addr: "臺中市西屯區文華路100號", phone: "04 2451 7250" }
+        ]; //之後會用資料庫存 目前只是試
+
+        function calculateDistance(origin, destination, callback) {
+            const service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix({
+                origins: [origin],
+                destinations: [destination],
+                travelMode: 'DRIVING',
+                unitSystem: google.maps.UnitSystem.METRIC,
+            }, (response, status) => {
+                if (status === 'OK') {
+                    callback(response.rows[0].elements[0].distance.text);
+                } else {
+                    console.error('Error fetching distance:', status);
+                }
+            });
+        }
+        const apiKey = "AIzaSyBCyJEb3PYP4LRAyqTN49Y7jsSjEtjClaI";
+
+        function fetchAddressLocation(address, callback) {
+            fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.results && data.results.length > 0) {
+                        const location = data.results[0].geometry.location;
+                        callback(location);
+                    } else {
+                        console.error("Error fetching geocode for:", address);
+                    }
+                });
+        }
+
+        function searchLocation() {
+            const address = document.getElementById('addressInput').value;
+            fetchAddressLocation(address, (location) => {
+                displayHospitals(location);
+            });
+        }
+
+        function resetToCurrentLocation() {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const location = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                displayHospitals(location);
+            });
+        }
+
+        function displayHospitals(userLocation) {
+            document.getElementById('hospitals').innerHTML = '';  // clear current hospitals
+            const distances = [];
+            hospitalsData.forEach((hospital, index) => {
+                fetchAddressLocation(hospital.addr, (location) => {
+                    const distanceInMeters = google.maps.geometry.spherical.computeDistanceBetween(
+                        new google.maps.LatLng(userLocation),
+                        new google.maps.LatLng(location)
+                    );
+                    distances.push({
+                        index: index,
+                        distance: distanceInMeters
+                    });
+                    if (distances.length === hospitalsData.length) {
+                        distances.sort((a, b) => a.distance - b.distance);
+                        for (let i = 0; i < 5; i++) {
+                            displayHospital(hospitalsData[distances[i].index], userLocation);
+                        }
+                    }
+                });
+            });
+        }
+
+        function displayHospital(hospital, userLocation) {
+            const hospitalDiv = document.createElement('div');
+            hospitalDiv.style.display = 'flex';
+            hospitalDiv.style.marginBottom = '20px';
+
+            const infoDiv = document.createElement('div');
+            infoDiv.style.flex = '1';
+            infoDiv.innerHTML = `<h2>${hospital.name}</h2><p>${hospital.addr}</p><p>${hospital.phone}</p>`;
+            hospitalDiv.appendChild(infoDiv);
+
+            const mapDiv = document.createElement('div');
+            mapDiv.style.flex = '1';
+            mapDiv.style.height = '200px';
+            hospitalDiv.appendChild(mapDiv);
+
+            document.getElementById('hospitals').appendChild(hospitalDiv);
+
+            fetchAddressLocation(hospital.addr, (location) => {
+                const map = new google.maps.Map(mapDiv, {
+                    zoom: 15,
+                    center: location
+                });
+                new google.maps.Marker({ position: location, map: map });
+                calculateDistance(userLocation, `${location.lat},${location.lng}`, (distance) => {
+                    const distanceElement = document.createElement('p');
+                    distanceElement.textContent = `距離: ${distance}`;
+                    infoDiv.appendChild(distanceElement);
+                });
+            });
+        }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCyJEb3PYP4LRAyqTN49Y7jsSjEtjClaI&libraries=geometry&callback=resetToCurrentLocation">
+        </script>
+</body>
+
+</html>

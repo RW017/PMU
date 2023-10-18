@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='body.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='btn.css') }}">
+    <link rel="stylesheet" href="..\static\btn.css">
+    <link rel="stylesheet" href="..\static\font.css">
+    <link rel="stylesheet" href="..\static\body.css">
+    <title>Three Sections</title>
+    <style>
+        .content {
+            height: 80vh;
+            background-color: #ffffff;
+            display: flex;
+        }
+
+        .chatbox_outer {
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .chatbox_inner {
+            height: 80%;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="side1">
+        <img src="..\static\logo.png" style="width:150px;height: auto;" stalt="Logo">
+        <div class="to_all">
+            <a href="home.html">回到主頁</a>
+            <a href="bot.html">療心機器人</a>
+            <a href="find.html">尋找資源</a>
+            <a href="test.html">測驗</a>
+            <a href="#">更多</a>
+        </div>
+    </div>
+    <div class="mid">
+        <div class="content">
+            測驗頁面
+        </div>
+    </div>
+    <div class="side2">
+        這邊還在想放什麼
+    </div>
+
+</body>
+
+</html>
