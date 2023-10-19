@@ -3,7 +3,7 @@ import requests
 import openai
 
 app = Flask(__name__)
-openai.api_key =  "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"
+openai.api_key =  "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"
 ENDPOINT = 'https://api.openai.com/v1/chat/completions'
 
 @app.route('/ask', methods=['POST'])
@@ -17,7 +17,7 @@ def ask():
         ENDPOINT,
         headers=headers,
         json={
-            'model': 'gpt-3.5-turbo',
+            'model': 'ft:gpt-3.5-turbo-0613:pmu:recipe-ner:8AqJpClH',
             'messages': data['messages']
         }
     )
