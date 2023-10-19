@@ -22,12 +22,45 @@
 
     <title>主頁面</title>
     <style>
-        .content{
+        .content {
             margin-top: 10px;
             margin-left: 5%;
             margin-right: 5%;
             padding-left: 10%;
             padding-right: 10%;
+            display: flex;
+            justify-content: center;
+           grid-gap: 20px;
+           align-items: center;
+
+        }
+
+        .item {
+            margin-top: 5%;
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(25% - 30px);
+            box-sizing: border-box;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .item p {
+            padding-left: 65px;
+            font-size: 20px;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .item img {
+            width: 100%;
+            display: block;
+            margin-left: 35px;
+            margin-right: 35px;
         }
     </style>
 </head>
@@ -67,9 +100,27 @@
     </div>
     <!-- 內容 -->
     <div class="content">
-    <input  placeholder="搜尋" style="width: 50%; font-size: 15px;">
-    </div>
+        <input placeholder="搜尋" style="width: 50%; font-size: 15px;">
 
+    </div>
+    <div class="content">
+        <div class="item">
+            <a href="#"><img src="\static\about.png" alt="about" style="border-radius: 10px;"></a>
+            <p>關於我們</p>
+        </div>
+        <div class="item"><a href="#">
+                <img src="\static\find.png" alt="find" style="border-radius: 10px;"></a>
+            <p>尋找資源</p>
+        </div>
+        <div class="item">
+            <a href="#"><img src="\static\test.png" alt="test" style="border-radius: 10px;"></a>
+            <p>測驗</p>
+        </div>
+        <div class="item">
+            <a href="#"><img src="\static\chat.png" alt="chat" style="border-radius: 10px;"></a>
+            <p>聊心室</p>
+        </div>
+    </div>
     <h5>@pull.me.up2023</h5>
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js'></script>
