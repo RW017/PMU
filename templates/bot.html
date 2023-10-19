@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='body.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='btn.css') }}">
+    <link rel="stylesheet" href="..\static\btn.css">
+    <link rel="stylesheet" href="..\static\font.css">
+    <link rel="stylesheet" href="..\static\body.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+    <title>主頁面</title>
+    <style>
+        .content {
+
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            margin: 0;
+            /* 移除預設的邊距 */
+
+        }
+
+        .box {
+            background-color: blueviolet;
+            height: 80%;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* 可選: 給框框一個陰影效果 */
+        }
+
+        #chat-container {
+            height: 90%;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+
+        .input-container {
+            height: 10%;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        #user-input {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .chatbox_outer {
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .chatbox_inner {
+            height: 80%;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#">聊心室</a>
+        <a href="#">測驗</a>
+        <a href="#">尋找資源</a>
+        <a href="#" class="home-icon"><img src="\static\home.png" alt="Home Icon"></a>
+    </div>
+    <!-- banner -->
+
+    <!-- 內容 -->
+    <div class="content">
+        <h1>早安安安安安</h1>
+        <div id="displayScore"></div>
+        <div id="chatbox">
+            <!-- 這裡會放置聊天內容 -->
+        </div>
+
+        <textarea id="userInput"></textarea>
+        <button onclick="sendMessage()">送出</button>
+
+    </div>
+
+
+    <h5>@pull.me.up2023</h5>
+    <script>
+        let messages = [];
+
+        function sendMessage() {
+            let userMessage = document.getElementById("userInput").value;
+            messages.push({ "role": "user", "content": userMessage });
+            updateChatbox(userMessage, "user");
+
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    messages: messages
+                })
+            }).then(response => response.json()).then(data => {
+                if (data && data.choices && data.choices.length > 0) {
+                    let botMessage = data.choices[0].message.content;
+                    messages.push({ "role": "assistant", "content": botMessage });
+                    updateChatbox(botMessage, "assistant");
+                } else {
+                    console.error("Unexpected data format:", data);
+                }
+            });
+        }
+
+        function updateChatbox(message, role) {
+            let chatbox = document.getElementById("chatbox");
+            let messageDiv = document.createElement("div");
+            messageDiv.className = role;
+            messageDiv.innerText = message;
+            chatbox.appendChild(messageDiv);
+        }
+    </script>
+</body>
+
+</html>

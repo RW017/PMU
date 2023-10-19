@@ -3,7 +3,7 @@ import requests
 import openai
 
 app = Flask(__name__)
-openai.api_key = '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'
+openai.api_key =  "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"
 ENDPOINT = 'https://api.openai.com/v1/chat/completions'
 
 @app.route('/ask', methods=['POST'])
@@ -24,20 +24,8 @@ def ask():
     return jsonify(response.json())
 
 @app.route('/bot.html')
-def bot_page():
-    return render_template('bot.html')
-
-@app.route('/find.html')
-def find_page():
-    return render_template('find.html')
-
-@app.route('/home.html')
-def home_page():
-    return render_template('home.html')
-
-@app.route('/test.html')
-def test_page():
-    return render_template('test.html')
+def bot():
+    return render_template("bot.html")
 
 
 if __name__ == '__main__':
