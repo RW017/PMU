@@ -24,13 +24,23 @@
             height: 90vh;
             margin: 0;
         }
-
+        .content h1,h2,h3,h4,h5{
+            padding-bottom: 10px;
+        }
+       
         .box {
-            background-color: blueviolet;
             height: 80%;
             width: 60%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-height: 550px;
+            max-width: 300px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+
 
         .page {
             display: none;
@@ -41,11 +51,96 @@
         }
 
         .image-container {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            /* 確保其父元素具有確定的高度或改為其他指定的高度，如 `300px` */
+            overflow: hidden;
+            /* 這會裁剪超出容器的內容，可根據需求添加 */
         }
 
+
+
+
         .question-options {
+            display: flex;
+            /* 使用Flexbox布局 */
+            flex-direction: column;
+            /* 垂直排列 */
+            justify-content: center;
+            /* 垂直居中对齐 */
+            align-items: center;
+            /* 水平居中对齐 */
             padding: 15px 0;
+        }
+
+        .question-options div {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .boxx {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            /* 設定為box的高度 */
+            width: 100%;
+        }
+
+        .btnn {
+            display: flex;
+            flex-direction: row;
+            /* 這行被更改為row，使內容水平排列 */
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .img2 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            height: 80%;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /* 確保超出的部分不會顯示 */
+        }
+
+        .img2 img {
+            max-width: 80%;
+            /* 確保圖片不超過容器的寬度 */
+            max-height: 80%;
+            /* 確保圖片不超過容器的高度 */
+            object-fit: contain;
+        }
+
+        .img {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            height: auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /* 確保超出的部分不會顯示 */
+        }
+
+        .img img {
+            max-width: 80%;
+            /* 確保圖片不超過容器的寬度 */
+            max-height: 100%;
+            overflow: hidden;
+
+            /* 確保圖片不超過容器的高度 */
+            object-fit: contain;
         }
     </style>
 </head>
@@ -64,162 +159,233 @@
         <div class="box">
             <!-- 問答部分開始 -->
             <div id="page1" class="page active">
-                <h2>封面</h2>
-                <button onclick="startQuiz()">開始測驗</button>
+                <div class="boxx">
+                    <h3>完成測驗</h3>
+                    <h3>匹配適合您的機器人</h3>
+                    <div class="img2">
+                        <img src="\static\test_title.jpg" alt="Image 1">
+                    </div>
+                    <button class="button-1" role="button" onclick="startQuiz()">開始測驗</button>
+                </div>
             </div>
             <!-- 第一題 -->
             <div id="page2" class="page">
                 <div class="image-container">
-                    <h1>第一</h1>
-                    <img src="\static\image2.jpg" alt="Image 2">
+                    <h3><strong>我每周會...</strong></h3>
+                    <div class="img">
+                        <img src="\static\test_1.jpg" alt="Image 2">
+                    </div>
+                    <p>覺得突然想哭，</p>
+                    <p>並覺得自己比以前更容易發脾氣。</p>
                 </div>
                 <div class="question-options">
                     <!-- radio 選項 -->
-                    <input type="radio" name="q1" id="q1o1" value="1">
-                    <label for="q1o1">Option 1</label><br>
-
-                    <input type="radio" name="q1" id="q1o2" value="2">
-                    <label for="q1o2">Option 2</label><br>
-
-                    <input type="radio" name="q1" id="q1o3" value="3">
-                    <label for="q1o3">Option 3</label><br>
-
-                    <input type="radio" name="q1" id="q1o4" value="4">
-                    <label for="q1o4">Option 4</label><br>
-
-                    <input type="radio" name="q1" id="q1o5" value="5">
-                    <label for="q1o5">Option 5</label><br>
+                    <div>
+                        <input type="radio" name="q1" id="q1o1" value="1">
+                        <label for="q1o1">幾乎沒有</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q1" id="q1o2" value="2">
+                        <label for="q1o2">1到2天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q1" id="q1o3" value="3">
+                        <label for="q1o3">3天左右</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q1" id="q1o4" value="4">
+                        <label for="q1o4">3到5天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q1" id="q1o5" value="5">
+                        <label for="q1o5">每天都會</label><br>
+                    </div>
                 </div>
 
-                <button onclick="changePage('next', 2)">下一議題</button>
-
+                <div class="btnn">
+                    <button class="button-1" role="button" onclick="changePage('next', 2)">下一題</button>
+                </div>
             </div>
             <!-- 第二題 -->
             <div id="page3" class="page">
                 <div class="image-container">
-                    <h1>第二</h1>
-                    <img src="\static\image2.jpg" alt="Image 2">
+                    <h3><strong>我每周會...</strong></h3>
+                    <div class="img">
+                        <img src="\static\test_2.jpg" alt="Image 2">
+                    </div>
+                    <p>睡不好，</p>
+                    <p>並覺得身體虛弱疲勞。</p>
                 </div>
                 <div class="question-options">
                     <!-- radio 選項 -->
-                    <input type="radio" name="q2" id="q2o1" value="1">
-                    <label for="q2o1">Option 1</label><br>
-
-                    <input type="radio" name="q2" id="q2o2" value="2">
-                    <label for="q2o2">Option 2</label><br>
-
-                    <input type="radio" name="q2" id="q2o3" value="3">
-                    <label for="q2o3">Option 3</label><br>
-
-                    <input type="radio" name="q2" id="q2o4" value="4">
-                    <label for="q2o4">Option 4</label><br>
-
-                    <input type="radio" name="q2" id="q2o5" value="5">
-                    <label for="q2o5">Option 5</label><br>
+                    <div>
+                        <input type="radio" name="q2" id="q2o1" value="1">
+                        <label for="q2o1">幾乎沒有</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q2" id="q2o2" value="2">
+                        <label for="q2o2">1到2天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q2" id="q2o3" value="3">
+                        <label for="q2o3">3天左右</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q2" id="q2o4" value="4">
+                        <label for="q2o4">3到5天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q2" id="q2o5" value="5">
+                        <label for="q2o5">每天都會</label><br>
+                    </div>
                 </div>
-
-                <button onclick="changePage('prev', 3)">上一議題</button>
-                <button onclick="changePage('next', 3)">下一議題</button>
+                <div class="btnn">
+                    <button class="button-1" role="button" onclick="changePage('prev', 3)">上一題</button>
+                    <button class="button-1" role="button" onclick="changePage('next', 3)">下一題</button>
+                </div>
             </div>
             <!-- 第三題 -->
             <div id="page4" class="page">
                 <div class="image-container">
-                    <h1>第三</h1>
-                    <img src="\static\image2.jpg" alt="Image 3">
+                    <h3><strong>我每周會...</strong></h3>
+                    <div class="img">
+                        <img src="\static\test_3.jpg" alt="Image 2">
+                    </div>
+                    <p>做事的時候無法專心，</p>
+                    <p>並覺得比之前更緩慢。</p>
                 </div>
                 <div class="question-options">
                     <!-- radio 選項 -->
-                    <input type="radio" name="q3" id="q3o1" value="1">
-                    <label for="q3o1">Option 1</label><br>
-
-                    <input type="radio" name="q3" id="q3o2" value="2">
-                    <label for="q3o2">Option 2</label><br>
-
-                    <input type="radio" name="q3" id="q3o3" value="3">
-                    <label for="q3o3">Option 3</label><br>
-
-                    <input type="radio" name="q3" id="q3o4" value="4">
-                    <label for="q3o4">Option 4</label><br>
-
-                    <input type="radio" name="q3" id="q3o5" value="5">
-                    <label for="q3o5">Option 5</label><br>
+                    <div>
+                        <input type="radio" name="q3" id="q3o1" value="1">
+                        <label for="q3o1">幾乎沒有</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q3" id="q3o2" value="2">
+                        <label for="q3o2">1到2天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q3" id="q3o3" value="3">
+                        <label for="q3o3">3天左右</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q3" id="q3o4" value="4">
+                        <label for="q3o4">3到5天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q3" id="q3o5" value="5">
+                        <label for="q3o5">每天都會</label><br>
+                    </div>
                 </div>
-
-                <button onclick="changePage('prev', 4)">上一議題</button>
-                <button onclick="changePage('next', 4)">下一議題</button>
+                <div class="btnn">
+                    <button class="button-1" role="button" onclick="changePage('prev', 4)">上一題</button>
+                    <button class="button-1" role="button" onclick="changePage('next', 4)">下一題</button>
+                </div>
             </div>
             <!-- 第四題 -->
             <div id="page5" class="page">
                 <div class="image-container">
-                    <h1>第四</h1>
-                    <img src="\static\image2.jpg" alt="Image 4">
+                    <h3><strong>我每周會...</strong></h3>
+                    <div class="img">
+                        <img src="\static\test_4.jpg" alt="Image 2">
+                    </div>
+                    <p>覺得自己比以前更沒信心，</p>
+                    <p>認為自己很沒用。</p>
                 </div>
                 <div class="question-options">
-                    <!-- radio 選項 -->
-                    <input type="radio" name="q4" id="q4o1" value="1">
-                    <label for="q4o1">Option 1</label><br>
+                    <div>
+                        <!-- radio 選項 -->
+                        <input type="radio" name="q4" id="q4o1" value="1">
+                        <label for="q4o1">幾乎沒有</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q4" id="q4o2" value="2">
+                        <label for="q4o2">1到2天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q4" id="q4o3" value="3">
+                        <label for="q4o3">3天左右</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q4" id="q4o4" value="4">
+                        <label for="q4o4">3到5天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q4" id="q4o5" value="5">
+                        <label for="q4o5">每天都會</label><br>
+                    </div>
 
-                    <input type="radio" name="q4" id="q4o2" value="2">
-                    <label for="q4o2">Option 2</label><br>
-
-                    <input type="radio" name="q4" id="q4o3" value="3">
-                    <label for="q4o3">Option 3</label><br>
-
-                    <input type="radio" name="q4" id="q4o4" value="4">
-                    <label for="q4o4">Option 4</label><br>
-
-                    <input type="radio" name="q4" id="q4o5" value="5">
-                    <label for="q4o5">Option 5</label><br>
                 </div>
-
-                <button onclick="changePage('prev', 5)">上一議題</button>
-                <button onclick="changePage('next', 5)">下一議題</button>
+                <div class="btnn">
+                    <button class="button-1" role="button" onclick="changePage('prev', 5)">上一題</button>
+                    <button class="button-1" role="button" onclick="changePage('next', 5)">下一題</button>
+                </div>
             </div>
             <!-- 第五題 -->
             <div id="page6" class="page">
                 <div class="image-container">
-                    <h1>第五</h1>
-                    <img src="\static\image2.jpg" alt="Image 5">
+                    <h3><strong>我每周會...</strong></h3>
+                    <div class="img">
+                        <img src="\static\test_5.jpg" alt="Image 2">
+                    </div>
+                    <p>覺得想不開，</p>
+                    <p>想死。</p>
                 </div>
                 <div class="question-options">
-                    <!-- radio 選項 -->
-                    <input type="radio" name="q5" id="q5o1" value="1">
-                    <label for="q5o1">Option 1</label><br>
-
-                    <input type="radio" name="q5" id="q5o2" value="2">
-                    <label for="q5o2">Option 2</label><br>
-
-                    <input type="radio" name="q5" id="q5o3" value="3">
-                    <label for="q5o3">Option 3</label><br>
-
-                    <input type="radio" name="q5" id="q5o4" value="4">
-                    <label for="q5o4">Option 4</label><br>
-
-                    <input type="radio" name="q5" id="q5o5" value="5">
-                    <label for="q5o5">Option 5</label><br>
+                    <div>
+                        <!-- radio 選項 -->
+                        <input type="radio" name="q5" id="q5o1" value="1">
+                        <label for="q5o1">幾乎沒有</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q5" id="q5o2" value="2">
+                        <label for="q5o2">1到2天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q5" id="q5o3" value="3">
+                        <label for="q5o3">3天左右</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q5" id="q5o4" value="4">
+                        <label for="q5o4">3到5天</label><br>
+                    </div>
+                    <div>
+                        <input type="radio" name="q5" id="q5o5" value="5">
+                        <label for="q5o5">每天都會</label><br>
+                    </div>
                 </div>
+                <div class="btnn">
 
-                <button onclick="changePage('prev', 6)">上一議題</button>
-                <button onclick="changePage('next', 6); submitAnswers()">確定送出</button>
+                    <button class="button-1" role="button" onclick="changePage('prev', 6)">上一題</button>
+                    <button class="button-1" role="button"
+                        onclick="changePage('next', 6); submitAnswers()">確定送出</button>
+                </div>
             </div>
 
 
             <div id="page7" class="page">
-                <div class="score-display">
-                    <h2>Your Score: <span id="score">0</span></h2>
+                <div class="boxx">
+                    <h3>測驗結果</h3>
+                    <div class="img2">
+                        <img id="resultImage" src="" alt="Result Image">
+                    </div>
+                    <h3 id="resultMessage"></h3>
+                    <div id="extraButtonContainer"></div>
+                    <button class="button-1" role="button" onclick="submitChat()">前往療心室</button>
+
                 </div>
-                <button onclick="submitChat()">前往療心室</button>
-
             </div>
-
-            <!-- 問答部分結束 -->
         </div>
+
+        <!-- 問答部分結束 -->
+    </div>
     </div>
 
     <h5>@pull.me.up2023</h5>
     <script>
-        
+
         let totalScore = 0;
+
         function startQuiz() {
             document.getElementById('page1').classList.remove('active');
             document.getElementById('page2').classList.add('active');
@@ -263,19 +429,47 @@
         }
 
         function submitAnswers() {
-            let totalScore = 0;
+            totalScore = 0;  // 注意：這裡我們只更新totalScore，而不重新定義它
 
-            // loop through all questions and get selected answers' values
+            // Get the values from the radio buttons
             for (let i = 1; i <= 5; i++) {
-                let selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
-                if (selectedOption) {
-                    totalScore += parseInt(selectedOption.value, 10);
+                let radios = document.getElementsByName('q' + i);
+                for (let j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        totalScore += parseInt(radios[j].value);
+                        break;
+                    }
                 }
             }
-            document.getElementById('score').innerText = totalScore;
-            // Redirect to chat.html with the score as a query parameter
 
+            let imagePath, message;
+            if (totalScore >= 0 && totalScore <= 12) {
+                imagePath = "/static/test_ans1.jpg";
+                message = "測驗完成!這邊幫我打我們準備好了怎麼樣的機器人給他，這個人是健康的歡樂的";
+            } else if (totalScore > 12 && totalScore <= 18) {
+                imagePath = "/static/test_ans2.jpg";
+                message = "測驗完成!這邊幫我打我們準備好了怎麼樣的機器人給他，這個人是有點EMO的";
+            } else {
+                imagePath = "/static/test_ans3.jpg";
+                message = "測驗完成!這邊幫我打我們準備好了怎麼樣的機器人給他，這個人是需要尋求資源跟EMO的";
+
+                // Create a button dynamically
+                const btn = document.createElement("button");
+                btn.className = "button-1";  // Apply the same class as your other buttons
+                btn.innerHTML = "尋找資源";
+                btn.onclick = function () {
+                    window.location.href = "find.html";
+                }
+
+                // Append the button to the container
+                const container = document.getElementById("extraButtonContainer");
+                container.appendChild(btn);
+            }
+
+            document.getElementById('resultImage').src = imagePath;
+            document.getElementById('resultMessage').innerText = message;
         }
+
 
         function submitChat() {
             console.log("totalScore:", totalScore);
