@@ -18,15 +18,17 @@
     <title>主頁面</title>
     <style>
         .content {
+            background-color: rgb(255, 38, 0);
             display: flex;
             justify-content: center;
             align-items: flex-start;
             /* 更改從 center 到 flex-start */
-            height: 100vh;
+            height: 80vh;
             text-align: center;
             padding-left: 15px;
             padding-right: 15px;
-            padding-top: 10%;
+            padding-top: 30px;
+            padding-bottom: 30px;
             /* 添加一個從頂部的間距，您可以根據需要調整這個值 */
         }
 
@@ -39,22 +41,55 @@
             align-items: center;
             max-height: calc(100vh - 50px);
             overflow-y: auto;
-            height: 80%;
+            height: 100%;
             width: 60%;
             min-height: 450px;
             max-width: 300px;
         }
 
-        .boxx{
+        .boxx {
             background-color: rgb(0, 255, 55);
             height: 65%;
             width: 85%;
+            overflow-y: auto;
+            /* 自動添加垂直滾動條 */
+            padding: 10px;
+            /* 可選的：添加內部間距，讓內容不會貼太近邊緣 */
+        }
+
+
+        .sentt {
+            display: flex;
         }
 
         #chat-container {
             height: 90%;
             overflow-y: scroll;
             padding: 10px;
+        }
+
+        .user,
+        .assistant {
+            /* 兩種訊息的基本樣式 */
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            max-width: 70%;
+            clear: both;
+        }
+
+        .user {
+            /* 用戶訊息的特定樣式 */
+            background-color: #FEBFB3;
+            /* 您可以選擇所需的顏色 */
+            float: right;
+        }
+
+        .assistant {
+            /* 機器人訊息的特定樣式 */
+            background-color: #E0F7FA;
+            /* 您可以選擇所需的顏色 */
+            float: left;
         }
 
         .input-container {
@@ -67,6 +102,10 @@
         #user-input {
             flex: 1;
             margin-right: 10px;
+        }
+
+        #userInput {
+            resize: none;
         }
 
         .chatbox_outer {
@@ -84,6 +123,19 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+        }
+
+        #chatbox {
+            /* 設置對話框的基本樣式 */
+            background-color: #e0e0e000;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
         }
     </style>
 </head>
@@ -103,13 +155,15 @@
             <h3>早安安安安安</h3>
             <P>*注意這邊請幫我打警告等等</P>
             <div class="boxx">
-            <div id="displayScore"></div>
-            <div id="chatbox">
-                <!-- 這裡會放置聊天內容 -->
+                <div id="displayScore"></div>
+                <div id="chatbox">
+                    <!-- 這裡會放置聊天內容 -->
+                </div>
             </div>
+            <div class="sentt">
+                <textarea id="userInput"></textarea>
+                <button class="button-1" role="button" onclick="sendMessage()">送出</button>
             </div>
-            <textarea id="userInput"></textarea>
-            <button class="button-1" role="button" onclick="sendMessage()">送出</button>
         </div>
     </div>
 
@@ -142,13 +196,29 @@
             });
         }
 
+        function scrollToBottom() {
+            let chatbox = document.getElementById("chatbox");
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+
+
         function updateChatbox(message, role) {
             let chatbox = document.getElementById("chatbox");
             let messageDiv = document.createElement("div");
             messageDiv.className = role;
             messageDiv.innerText = message;
             chatbox.appendChild(messageDiv);
+
+            let clearDiv = document.createElement("div");
+            clearDiv.className = "clearfix";
+            chatbox.appendChild(clearDiv);
+
+            setTimeout(scrollToBottom, 500); // 使用setTimeout來延遲滾動
         }
+
+
+
     </script>
 </body>
 
