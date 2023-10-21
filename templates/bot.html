@@ -18,21 +18,37 @@
     <title>主頁面</title>
     <style>
         .content {
-
+            display: flex;
             justify-content: center;
-            align-items: center;
-            height: 90vh;
-            margin: 0;
-            /* 移除預設的邊距 */
-
+            align-items: flex-start;
+            /* 更改從 center 到 flex-start */
+            height: 100vh;
+            text-align: center;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 10%;
+            /* 添加一個從頂部的間距，您可以根據需要調整這個值 */
         }
 
+
         .box {
-            background-color: blueviolet;
+            background-color: aqua;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-height: calc(100vh - 50px);
+            overflow-y: auto;
             height: 80%;
             width: 60%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* 可選: 給框框一個陰影效果 */
+            min-height: 450px;
+            max-width: 300px;
+        }
+
+        .boxx{
+            background-color: rgb(0, 255, 55);
+            height: 65%;
+            width: 85%;
         }
 
         #chat-container {
@@ -74,24 +90,27 @@
 
 <body>
     <div class="navbar">
-        <a href="#">聊心室</a>
-        <a href="#">測驗</a>
-        <a href="#">尋找資源</a>
-        <a href="#" class="home-icon"><img src="\static\home.png" alt="Home Icon"></a>
+        <a href="bot.html">療心室</a>
+        <a href="test.html">測驗</a>
+        <a href="find.html">尋找資源</a>
+        <a href="index.html" class="home-icon"><img src="\static\home.png" alt="Home Icon"></a>
     </div>
     <!-- banner -->
 
     <!-- 內容 -->
     <div class="content">
-        <h1>早安安安安安</h1>
-        <div id="displayScore"></div>
-        <div id="chatbox">
-            <!-- 這裡會放置聊天內容 -->
+        <div class="box">
+            <h3>早安安安安安</h3>
+            <P>*注意這邊請幫我打警告等等</P>
+            <div class="boxx">
+            <div id="displayScore"></div>
+            <div id="chatbox">
+                <!-- 這裡會放置聊天內容 -->
+            </div>
+            </div>
+            <textarea id="userInput"></textarea>
+            <button class="button-1" role="button" onclick="sendMessage()">送出</button>
         </div>
-
-        <textarea id="userInput"></textarea>
-        <button onclick="sendMessage()">送出</button>
-
     </div>
 
 

@@ -22,6 +22,14 @@
 
     <title>主頁面</title>
     <style>
+        .box {
+            margin: 1% auto;
+            max-width: 800px;
+            display: block;
+            /* 確保元素為block層級 */
+        }
+
+
         .content {
             margin-top: 10px;
             margin-left: 5%;
@@ -30,8 +38,8 @@
             padding-right: 10%;
             display: flex;
             justify-content: center;
-           grid-gap: 20px;
-           align-items: center;
+            grid-gap: 20px;
+            align-items: center;
 
         }
 
@@ -49,8 +57,8 @@
         }
 
         .item p {
-            padding-left: 65px;
-            font-size: 20px;
+            padding-left: 60px;
+            font-size: 18px;
             text-align: center;
             width: 100%;
             margin-top: 10px;
@@ -67,58 +75,56 @@
 
 <body>
     <div class="navbar">
-        <a href="#">聊心室</a>
-        <a href="#">測驗</a>
-        <a href="#">尋找資源</a>
-        <a href="#" class="home-icon"><img src="\static\home.png" alt="Home Icon"></a>
+        <a href="bot.html">療心室</a>
+        <a href="test.html">測驗</a>
+        <a href="find.html">尋找資源</a>
+        <a href="index.html" class="home-icon"><img src="\static\home.png" alt="Home Icon"></a>
     </div>
     <!-- banner -->
-    <div id="sync1" class="owl-carousel owl-theme">
-        <div class="item">
-            <img src="\static\title1.png" alt="title1">
-        </div>
-        <div class="item">
-            <img src="\static\title1.png" alt="title1">
-        </div>
-        <div class="item">
-            <img src="\static\title1.png" alt="title1">
+    <div class="box">
+        <div id="sync1" class="owl-carousel owl-theme">
+            <div class="item">
+                <img src="\static\title1.png" alt="title1">
+            </div>
+            <div class="item">
+                <img src="\static\title1.png" alt="title1">
+            </div>
+            <div class="item">
+                <img src="\static\title1.png" alt="title1">
+            </div>
+
         </div>
 
-    </div>
+        <div id="sync2" class="owl-carousel owl-theme">
+            <div class="item">
+                <h1>1</h1>
+            </div>
+            <div class="item">
+                <h1>2</h1>
+            </div>
+            <div class="item">
+                <h1>3</h1>
+            </div>
 
-    <div id="sync2" class="owl-carousel owl-theme">
-        <div class="item">
-            <h1>1</h1>
         </div>
-        <div class="item">
-            <h1>2</h1>
-        </div>
-        <div class="item">
-            <h1>3</h1>
-        </div>
-
-    </div>
-    <!-- 內容 -->
-    <div class="content">
-        <input placeholder="搜尋" style="width: 50%; font-size: 15px;">
-
-    </div>
-    <div class="content">
-        <div class="item">
-            <a href="#"><img src="\static\about.png" alt="about" style="border-radius: 10px;"></a>
-            <p>關於我們</p>
-        </div>
-        <div class="item"><a href="#">
-                <img src="\static\find.png" alt="find" style="border-radius: 10px;"></a>
-            <p>尋找資源</p>
-        </div>
-        <div class="item">
-            <a href="#"><img src="\static\test.png" alt="test" style="border-radius: 10px;"></a>
-            <p>測驗</p>
-        </div>
-        <div class="item">
-            <a href="#"><img src="\static\chat.png" alt="chat" style="border-radius: 10px;"></a>
-            <p>聊心室</p>
+        <!-- 內容 -->
+        <div class="content">
+            <div class="item">
+                <a href="#"><img src="\static\about.png" alt="about" style="border-radius: 10px;"></a>
+                <p>關於我們</p>
+            </div>
+            <div class="item"><a href="#">
+                    <img src="\static\find.png" alt="find" style="border-radius: 10px;"></a>
+                <p>尋找資源</p>
+            </div>
+            <div class="item">
+                <a href="#"><img src="\static\test.png" alt="test" style="border-radius: 10px;"></a>
+                <p>測驗</p>
+            </div>
+            <div class="item">
+                <a href="#"><img src="\static\chat.png" alt="chat" style="border-radius: 10px;"></a>
+                <p>聊心室</p>
+            </div>
         </div>
     </div>
     <h5>@pull.me.up2023</h5>
