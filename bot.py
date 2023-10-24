@@ -3,7 +3,7 @@ import requests
 import openai
 
 app = Flask(__name__)
-openai.api_key = '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'
+openai.api_key = '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'
 ENDPOINT = 'https://api.openai.com/v1/chat/completions'
 
 @app.route('/ask', methods=['POST'])

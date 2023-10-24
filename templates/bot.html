@@ -18,7 +18,6 @@
     <title>主頁面</title>
     <style>
         .content {
-            background-color: rgb(255, 38, 0);
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -34,22 +33,33 @@
 
 
         .box {
-            background-color: aqua;
-            gap: 10px;
+            background-color:#ffe5e5;
+            gap: 15px;
+            padding-right: 15PX;
+            padding-left: 15PX;
+            padding-top: 15PX;
+            padding-bottom: 15PX;
             display: flex;
             flex-direction: column;
             align-items: center;
             max-height: calc(100vh - 50px);
             overflow-y: auto;
             height: 100%;
-            width: 60%;
+            width: 80%;
             min-height: 450px;
-            max-width: 300px;
+            max-width: 500px;
+
+            /* Adding rounded corners */
+            border-radius: 20px;
+
+            /* Adding subtle shadow around the box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+
         .boxx {
-            background-color: rgb(0, 255, 55);
-            height: 65%;
+            background-color: #ffffff;
+            height: 75%;
             width: 85%;
             overflow-y: auto;
             /* 自動添加垂直滾動條 */
@@ -60,6 +70,8 @@
 
         .sentt {
             display: flex;
+            width: 85%;
+            height: 10%;
         }
 
         #chat-container {
@@ -80,7 +92,8 @@
 
         .user {
             /* 用戶訊息的特定樣式 */
-            background-color: #FEBFB3;
+            background-color: #f28484;
+            color: #ffffff;
             /* 您可以選擇所需的顏色 */
             float: right;
         }
@@ -99,9 +112,10 @@
             padding: 10px;
         }
 
-        #user-input {
+        #userInput {
             flex: 1;
             margin-right: 10px;
+            width: 100%;
         }
 
         #userInput {
@@ -152,8 +166,8 @@
     <!-- 內容 -->
     <div class="content">
         <div class="box">
-            <h3>早安安安安安</h3>
-            <P>*注意這邊請幫我打警告等等</P>
+            <h1>Hi～今天想和我聊點什麼呢?</h1>
+
             <div class="boxx">
                 <div id="displayScore"></div>
                 <div id="chatbox">
@@ -164,6 +178,8 @@
                 <textarea id="userInput"></textarea>
                 <button class="button-1" role="button" onclick="sendMessage()">送出</button>
             </div>
+            <P>*雖然我受過訓練，但我有時候說的可能會不夠詳盡或者錯誤。如果有需要的話我會推薦您一些附近的專業醫療院所。</P>
+
         </div>
     </div>
 
